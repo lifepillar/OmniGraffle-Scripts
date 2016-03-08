@@ -16,6 +16,19 @@ Any script placed in here will be able to be added to the toolbar.
 ![Image of toolbar adding Scripts](Toolbar.png)
 
 --
+
+Replacing Icons
+--
+To make the icons in the toolbar a little more useful first create the icon, (drag-drop a png to [https://iconverticons.com/online/](https://iconverticons.com/online/) ) 'icns (finder ready)' worked for me.
+
+Got to the scrips folder (omnigraffle Help -> Open scripts folder), 'Get Info' (cmd-i) on the script.
+
+Drag and drop your created icon file into the top left of the get info window, over the current icon.
+
+Now remove scripts from the omnigraffle toolbar, then re-apply and the new icons should be displayed in the toolbar.
+
+![Image of toolbar adding Scripts with icons](Toolbar-with-icons.png)
+--
 [OmniGraffle 6 Mannual](http://files.omnigroup.com/software/MacOSX/Manuals/omnigraffle-6-manual.pdf)
 
 
