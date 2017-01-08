@@ -6,8 +6,21 @@ tell application id "OGfl"
 	set objOmniGraffleFile to front document
 	set canvas of front window to canvas 1 of objOmniGraffleFile
 	set intCanvasCount to count of canvases of objOmniGraffleFile
-	
+	--set name to "test"
+	-- name of objOmniGraffleFile
 	set theNumber to 1
+	
+	-- Get filename without extension (sets baseName)
+	set _path to path of objOmniGraffleFile
+	tell application "Finder"
+		set {_filename, _extension, _ishidden} to the ¬
+			{displayed name, name extension, extension hidden} ¬
+				of ((the _path as POSIX file) as alias)
+	end tell
+	if (_extension ≠ missing value) then
+		set baseName to texts 1 thru -((length of _extension) + 2) of _filename
+	end if
+	
 	
 	--Iterate through each canvas and export it to the specified folder
 	--File name will be the file name of the file with a hyphen and then the name of the canvas
@@ -15,7 +28,7 @@ tell application id "OGfl"
 	repeat with intCurrentCanvasID from 1 to intCanvasCount
 		set canvas of front window to canvas intCurrentCanvasID of objOmniGraffleFile
 		set currentCanvas to canvas of front window
-		set strOutputFilePath to strOutputDirectory & (theNumber) & " - " & name of currentCanvas & ".png" as string
+		set strOutputFilePath to strOutputDirectory & baseName & " - " & name of currentCanvas & ".png" as string
 		set area type of current export settings to current canvas
 		save objOmniGraffleFile as "png" in file (strOutputFilePath)
 		set theNumber to theNumber + 1
